@@ -1,29 +1,18 @@
 (function () {
     var app = angular.module("demo", []);
-    app.controller("StoreController", function () {
-        this.contacts1 = contact; 
+    app.controller("StoreController", function ($http) {
+        var pb = this;
+        this.contacts = [];
+        this.delete = function(loc) {
+            pb.contacts.splice(loc, 1)
+        };
+        this.toggleEdit = function(c) {
+            c.editable = !c.editable?true:false;
+        };
+        $http.get("phone-book.json").then(function(res) {
+            pb.contacts = res.data.contacts
+        },function(res) {
+            console.log("Error")
+        })
     });
-    var contact = [{
-        name: "kaviyarasu",
-        dob : "16-02-1997",
-        email : "kaviyarrasu@gmail.com",
-        phone : 9724462862
-        }, {
-        name: "sundhar ",
-        dob : "29-04-1997",
-        email : "smoorthy@gmail.com",
-        phone : 8137294763
-        },
-        {
-            name: "nandharkumar",
-            dob: "02-07-1996",
-            email : "nandhakumar@gmail.com",
-            phone : 8362750372
-        },
-        {
-            name: "obulisathish",
-            dob : "23-03-1997",
-            email : "obulisathish@gmail.com",
-            phone : 9736749239
-        }];
 })();
