@@ -1,0 +1,32 @@
+
+<table class="table">
+    <tr>
+        <th>#</th>
+        <th>ID</th>
+        <th>Firstname</th>
+        <th>Lastname</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr ng-repeat="contact in store.contacts">
+        <td>{{$index + 1}}</td>
+        <td>{{contact.id}}</td>
+        <td>
+            <span>{{contact.firstName}}</span>
+        </td>
+        <td>
+            <span>{{contact.lastName}}</span>
+        </td>
+        <td>
+            <span>{{contact.email}}</span>
+        </td>
+        <td>
+            <span>{{contact.phone}}</span>
+        </td>
+        <td>
+            <a href="#/edit/{{contact.id}}">Edit</a>
+            <a href="#/delete/{{contact.id}}">Delete</a>
+        </td>
+    </tr>
+</table>
